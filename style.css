@@ -1,0 +1,43 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+}
+
+header, footer {
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    header img, footer img {
+        height: 40px;
+    }
+
+section {
+    margin-top: 20px;
+}
+
+img {
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+audio {
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upset Recovery Training –ALL FLEET</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Upset Recovery Training –ALL FLEET</h1>
+        <img src="images/domestic-airlines-logo.png" alt="Domestic Airlines Logo" />
+    </header>
+
+    <nav>
+        <ul>
+            <li onclick="showSection('intro')">Introduction</li>
+            <li onclick="showSection('causes')">Causes</li>
+            <li onclick="showSection('recognition')">Recognition</li>
+            <li onclick="showSection('recovery')">Recovery</li>
+            <li onclick="showSection('summary')">Summary</li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="intro">
+            <h2>Introduction</h2>
+            <p>Upset Prevention and Recovery Training (UPRT) is essential to reduce Loss of Control In-flight (LOC-I). This module follows ICAO Doc 10011 and supports competency-based training for B738 crews.</p>
+            <img src="images/upset-overview.jpg" alt="Upset Overview Diagram" />
+            <audio controls src="audio/intro.mp3"></audio>
+            <button onclick="markComplete('intro')">Mark as Completed</button>
+            <div style="margin-top: 30px;">
+                <a href="index.html"><button>🏠 Back to Menu</button></a>
+                <a href="module1-introduction.html"><button>➡️ Next Module</button></a>
+                <a href="moduleX-prev.html"><button>⬅️ Previous Module</button></a>
+            </div>
+        </section>
+
+        <section id="causes" style="display:none;">
+            <h2>Causes of Upset</h2>
+            <p>Upsets may result from environmental factors (turbulence, windshear), system anomalies, or pilot inputs. Understanding these helps prevent escalation.</p>
+            <img src="images/upset-causes.jpg" alt="Causes of Upset" />
+            <audio controls src="audio/causes.mp3"></audio>
+            <button onclick="markComplete('causes')">Mark as Completed</button>
+        </section>
+
+        <section id="recognition" style="display:none;">
+            <h2>Recognition</h2>
+            <p>Early recognition is key. Indicators include excessive pitch, bank angles, or airspeed deviations. Pilots must maintain situational awareness and monitor flight parameters.</p>
+            <img src="images/upset-recognition.jpg" alt="Recognition Cues" />
+            <audio controls src="audio/recognition.mp3"></audio>
+            <button onclick="markComplete('recognition')">Mark as Completed</button>
+        </section>
+        <div id="timer" style="font-weight:bold; margin-bottom:10px;">⏱ Time: 0m 0s</div>
+        <div id="progress-badge" style="color:green; font-weight:bold;"></div>
+
+        <section id="recovery" style="display:none;">
+            <h2>Recovery Techniques</h2>
+            <p>Recovery involves reducing angle of attack, leveling wings, and managing thrust. Techniques vary by upset type: nose-high, nose-low, or roll-induced.</p>
+            <img src="images/upset-recovery.jpg" alt="Recovery Techniques" />
+            <audio controls src="audio/recovery.mp3"></audio>
+            <button onclick="markComplete('recovery')">Mark as Completed</button>
+        </section>
+
+        <section id="summary" style="display:none;">
+            <h2>Summary & Checklist</h2>
+            <p>UPRT enhances pilot resilience and decision-making. Always prioritize early recognition and smooth recovery inputs.</p>
+            <ul>
+                <li>✔ Understand causes of upset</li>
+                <li>✔ Recognize early warning signs</li>
+                <li>✔ Apply correct recovery techniques</li>
+                <li>✔ Practice in simulator scenarios</li>
+            </ul>
+            <button onclick="alert('Course marked complete. You may now proceed to evaluation.')">Finish Course</button>
+        </section>
+    </main>
+
+    <footer>
+        <span>Powered by Domestic Airlines</span>
+        <img src="images/domestic-airlines-logo.png" alt="Domestic Airlines Logo" />
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

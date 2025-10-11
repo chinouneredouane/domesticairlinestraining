@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Module 5 – Stability</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Module 5 – Stability & Load Factor</h1>
+        <img src="images/domestic-airlines-logo.png" alt="Logo" />
+    </header>
+    <div style="margin-top: 30px;">
+        <a href="index.html"><button>🏠 Back to Menu</button></a>
+        <a href="module6.1-weight-and-balance.html"><button>➡️ Next Module</button></a>
+        <a href="module4-stall.html"><button>⬅️ Previous Module</button></a>
+    </div>
+    <section>
+        <div id="timer" style="font-weight:bold; margin-bottom:10px;">⏱ Time: 0m 0s</div>
+        <div id="progress-badge" style="color:green; font-weight:bold;"></div>
+        <p>Sideslip angle affects lateral stability. Load factor increases with bank angle. Pilots must understand G-forces and their impact on control.</p>
+        <img src="images/sideslip.jpg" alt="Sideslip" />
+        <img src="images/load-factor.jpg" alt="Load Factor" />
+        <img src="images/load-factor2.jpg" alt="Load Factor" />
+        <audio controls src="audio/stability.mp3"></audio>
+        <button onclick="markComplete('Stability')">Mark as Completed</button>
+    </section>
+    <footer>
+        <span>Domestic Airlines</span>
+        <img src="images/domestic-airlines-logo.png" alt="Logo" />
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        startTimer();
+        updateProgress('Module 5 – Stability & Load Factor');
+    </script>
+</body>
+</html>

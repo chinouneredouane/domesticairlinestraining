@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Module 2 – Certification</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Module 2 – Aircraft Certification</h1>
+        <img src="images/domestic-airlines-logo.png" alt="Logo" />
+    </header>
+    <div style="margin-top: 30px;">
+        <a href="index.html"><button>🏠 Back to Menu</button></a>
+        <a href="module3-aerodynamics.html"><button>➡️ Next Module</button></a>
+        <a href="module1-introduction.html"><button>⬅️ Previous Module</button></a>
+    </div>
+    <section>
+        <div id="timer" style="font-weight:bold; margin-bottom:10px;">⏱ Time: 0m 0s</div>
+        <div id="progress-badge" style="color:green; font-weight:bold;"></div>
+        <p>Aircraft are certified with defined operational envelopes: MMO, VMO, MDF, VDF. Exceeding these limits can lead to upset conditions. OEM testing ensures recovery is possible.</p>
+        <img src="images/flight-envelope.jpg" alt="Flight Envelope" />
+        <audio controls src="audio/certification.mp3"></audio>
+        <button onclick="markComplete('Certification')">Mark as Completed</button>
+    </section>
+    <footer>
+        <span>Domestic Airlines</span>
+        <img src="images/domestic-airlines-logo.png" alt="Logo" />
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        startTimer();
+        updateProgress('Module 2 – Aircraft Certificationame');
+    </script>
+</body>
+</html>

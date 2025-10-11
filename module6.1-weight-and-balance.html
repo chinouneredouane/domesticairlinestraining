@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Module6.1 – Weight & Balance</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Module6.1– Weight & Balance</h1>
+        <img src="images/domestic-airlines-logo.png" alt="Logo" />
+    </header>
+    <div style="margin-top: 30px;">
+        <a href="index.html"><button>🏠 Back to Menu</button></a>
+        <a href="module6-performance.html"><button>➡️ Next Module</button></a>
+        <a href="module5-stability.html"><button>⬅️ Previous Module</button></a>
+    </div>
+    <section>
+        <div id="timer" style="font-weight:bold; margin-bottom:10px;">⏱ Time: 0m 0s</div>
+        <div id="progress-badge" style="color:green; font-weight:bold;"></div>
+        <p>Aircraft handling characteristics are directly affected by center of gravity (CG) position. A forward CG increases stability but reduces maneuverability. An aft CG does the opposite.</p>
+        <p>Operating outside the weight and balance envelope can lead to unpredictable behavior, especially during upset recovery at high altitudes.</p>
+        <img src="images/weight-balance.jpg" alt="Weight and Balance Diagram" />
+        <img src="images/maxspeed.jpg" alt="Weight and Balance Diagram" />
+        <audio controls src="audio/weight-balance.mp3"></audio>
+        <button onclick="markComplete('Weight & Balance')">Mark as Completed</button>
+    </section>
+    <footer>
+        <span>Domestic Airlines</span>
+        <img src="images/domestic-airlines-logo.png" alt="Logo" />
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        startTimer();
+        updateProgress('Module6.1 – Weight & Balance');
+    </script>
+</body>
+</html>
