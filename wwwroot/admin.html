@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructor Dashboard</title>
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+    <header class="topbar">
+        <a href="index.html" class="brand">
+            <img src="images/domestic-airlines-logo.png" alt="" onerror="this.remove()" />
+            <span>Domestic Airlines <strong>Instructor</strong></span>
+        </a>
+    </header>
+
+    <main class="container">
+        <h1>Instructor dashboard</h1>
+
+        <form id="key-form" class="card row">
+            <label for="key" style="margin:0">Admin key</label>
+            <input id="key" type="password" style="max-width:260px" required />
+            <button type="submit">Load results</button>
+            <span id="status" class="muted"></span>
+        </form>
+
+        <div id="content" hidden>
+            <div class="stats" id="stats"></div>
+            <section class="card">
+                <div class="row">
+                    <h2 class="spacer" style="margin:0">Trainees</h2>
+                    <input id="filter" placeholder="Search name or staff ID" style="max-width:240px" />
+                    <button id="csv" class="btn-secondary">Export CSV</button>
+                </div>
+                <div style="overflow-x:auto">
+                    <table class="data" id="trainees"></table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/courses.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
