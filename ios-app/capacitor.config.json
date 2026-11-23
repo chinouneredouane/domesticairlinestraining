@@ -1,6 +1,6 @@
 {
-  "appId": "com.domesticairlines.uprt",
-  "appName": "UPRT Training",
+  "appId": "com.domesticairlines.daltraining",
+  "appName": "DAL TRAINING",
   "webDir": "www",
   "ios": {
     "contentInset": "never",

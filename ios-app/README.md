@@ -1,11 +1,18 @@
-# UPRT Training – iOS app
+# DAL TRAINING – iOS app
 
-This folder turns the Domestic Airlines Upset Recovery Training website into an iPhone and iPad app for company pilots.
+**DAL TRAINING** is the Domestic Airlines training academy as an iPhone and iPad app for company pilots. It has two courses:
+
+| Course | Source | Content |
+|---|---|---|
+| Upset Prevention & Recovery (UPRT) | this repository (`index.html`, `module*.html`) | 12 modules |
+| Cold Weather Operations | [cold-weather-ops](https://github.com/chinouneredouane/cold-weather-ops) (the course zip) | 30 lessons + final quiz |
 The app is built with [Capacitor](https://capacitorjs.com): the training pages run inside a native iOS shell, and everything is bundled into the app, so **it works fully offline** (in flight, on a layover, with no Wi-Fi).
 
 ## What pilots get
 
-- **Home dashboard.** A progress ring, a large *Start / Continue* button that opens the next unfinished module, and a list of all 12 modules showing their status (Done / In progress).
+- **Academy home.** The Domestic Airlines logo, a card for each course with its progress, and *Continue* buttons that return to where the pilot left off.
+- **Course page.** A progress ring, a large *Start / Continue* button, and the list of lessons with their status (Done / In progress).
+- **Final quiz** (Cold Weather Ops). Questions are shown one at a time with large answer buttons and instant feedback, followed by a score, pass or fail (pass mark 80%), and a review of every answer. The pilot's best score is saved.
 - **Module reader.** Large readable text, a bottom bar with *Prev / Mark complete / Next* within thumb reach, and swipe left or right to change module.
 - **Images.** Tap an image to see it full screen and pinch to zoom.
 - **Audio narration** for each module.
@@ -15,17 +22,27 @@ The app is built with [Capacitor](https://capacitorjs.com): the training pages r
 - **Course complete** screen once all modules are done.
 - Designed for iPhone and iPad, in portrait or landscape. Touch targets are at least 44 pt.
 
-## Where the content comes from
+## Where the content lives
 
-| What | Where |
+Each course is one file in `www/js/`:
+
+| File | What it holds |
 |---|---|
-| Module text | `www/js/modules.js`, taken from `index.html` and `module*.html` |
-| Images | `../images/`, copied into the app at build time |
-| Audio | `../audio/`, copied into the app at build time |
+| `course-uprt.js` | UPRT module text. Images and audio are copied from `../images/` and `../audio/` at build time. |
+| `course-cold-weather.js` | Cold Weather lessons and quiz questions. Images are in `www/media/cold-weather/images/`, audio goes in `www/media/cold-weather/audio/lessonXX.mp3`. |
 
-> **Note:** the `images/` and `audio/` folders are not in the repository yet. Upload them to the repository root using the same file names the website uses (for example `images/upset-overview.jpg` and `audio/intro.mp3`). Until then, the app hides any missing image or audio player instead of showing a broken icon.
+The app hides any missing image or audio player instead of showing a broken icon.
 
-To change the text, edit `www/js/modules.js` and rebuild.
+### Adding a new course
+1. Copy one of the `course-*.js` files and give it a new `id`, `title` and `lessons`. Add `quiz: { count, passPct, questions: [...] }` if the course has a quiz.
+2. Add a `<script src="js/course-NEW.js">` line to `www/index.html`.
+3. Put its media in `www/media/NEW/`.
+
+### Content still missing
+- **UPRT:** the `images/` and `audio/` folders are not in this repository. Upload them to the repository root.
+- **Cold Weather Ops:** only lessons 01–02 have full text. Lessons 03–30 have the generic bullet points from the original site.
+- **Cold Weather Ops quiz:** the original question bank had 1 real question plus 49 copies of the same placeholder, so the quiz currently has 2 questions. Add real questions in `quiz.questions`. The quiz automatically uses up to 20 of them.
+- **Cold Weather Ops:** there is no lesson audio, and the lesson images are title cards.
 
 ## Building the app
 
@@ -40,7 +57,7 @@ npm run ios:open      # opens Xcode
 
 In Xcode:
 1. Select the **App** target, open **Signing & Capabilities**, and choose your company's Apple Developer team.
-2. If needed, change the Bundle Identifier (currently `com.domesticairlines.uprt`).
+2. If needed, change the Bundle Identifier (currently `com.domesticairlines.daltraining`).
 3. Choose a simulator or a connected iPhone and press **Run ▶**.
 
 To preview the app in a browser without a Mac, run `npm run serve` and open http://localhost:8080.

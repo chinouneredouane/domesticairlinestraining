@@ -1,8 +1,8 @@
 {
-  "name": "uprt-pilot-app",
+  "name": "dal-training-app",
   "version": "1.0.0",
   "private": true,
-  "description": "Domestic Airlines Upset Recovery Training (UPRT) – iOS app for pilots, built from the training website.",
+  "description": "DAL TRAINING \u2013 Domestic Airlines training academy iOS app (UPRT, Cold Weather Operations, ...).",
   "scripts": {
     "sync-assets": "node scripts/sync-assets.js",
     "build": "npm run sync-assets",

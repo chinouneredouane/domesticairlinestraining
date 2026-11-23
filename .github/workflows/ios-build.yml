@@ -1,4 +1,4 @@
-name: iOS app build
+name: DAL TRAINING iOS build
 
 on:
   push:
@@ -26,5 +26,5 @@ jobs:
             -derivedDataPath build CODE_SIGNING_ALLOWED=NO build
       - uses: actions/upload-artifact@v4
         with:
-          name: UPRT-simulator-app
+          name: DAL-TRAINING-simulator-app
           path: ios-app/build/Build/Products/Debug-iphonesimulator/App.app

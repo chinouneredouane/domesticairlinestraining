@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
   <meta name="format-detection" content="telephone=no" />
-  <title>UPRT Training</title>
+  <title>DAL TRAINING</title>
   <link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
   <header class="topbar" id="topbar">
-    <button class="icon-btn" id="backBtn" aria-label="Back to modules" hidden>
-      <span aria-hidden="true">‹</span> Modules
+    <button class="icon-btn" id="backBtn" aria-label="Back" hidden>
+      <span aria-hidden="true">‹</span> <span id="backLabel">Back</span>
     </button>
-    <div class="topbar-title" id="topbarTitle">Upset Recovery Training</div>
+    <div class="topbar-title" id="topbarTitle">DAL TRAINING</div>
     <button class="icon-btn" id="settingsBtn" aria-label="Settings">
       <span aria-hidden="true" class="gear">⚙︎</span>
     </button>
@@ -57,7 +57,7 @@
     </div>
 
     <button class="pager-btn primary wide" id="closeSettings">Done</button>
-    <p class="about">Domestic Airlines · UPRT – All Fleet<br />Works fully offline.</p>
+    <p class="about">DAL TRAINING · Domestic Airlines Training Academy<br />Works fully offline.</p>
   </section>
 
   <!-- Image viewer -->
@@ -69,7 +69,8 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/modules.js"></script>
+  <script src="js/course-uprt.js"></script>
+  <script src="js/course-cold-weather.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
 node_modules/
 build/
-# media is copied from the repo root at build time
-www/images/
-www/audio/
+# UPRT media is copied from the repo root at build time
+www/media/uprt/
