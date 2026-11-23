@@ -1,0 +1,30 @@
+name: DAL TRAINING iOS build
+
+on:
+  push:
+    paths: ['ios-app/**', 'images/**', 'audio/**', '.github/workflows/ios-build.yml']
+  workflow_dispatch:
+
+jobs:
+  build-simulator:
+    runs-on: macos-15
+    defaults:
+      run:
+        working-directory: ios-app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run ios:sync
+      - name: Build for iOS Simulator (no signing needed)
+        run: |
+          xcodebuild -project ios/App/App.xcodeproj -scheme App \
+            -configuration Debug -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DAL-TRAINING-simulator-app
+          path: ios-app/build/Build/Products/Debug-iphonesimulator/App.app
