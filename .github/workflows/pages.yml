@@ -1,7 +1,9 @@
-name: Publish DAL TRAINING web app
+name: Publish redirect to the Training Academy
 
-# Publishes ios-app/www to GitHub Pages so pilots can install DAL TRAINING
-# from Safari (Share → Add to Home Screen). Runs on every push to main.
+# DAL TRAINING now lives in the domesticairlineselearning repository:
+#   https://chinouneredouane.github.io/domesticairlineselearning/
+# This site only redirects there. redirect/sw.js also removes the old offline
+# copy from devices that installed the earlier version. Runs on every push to main.
 on:
   push:
     branches: [main]
@@ -24,17 +26,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Build web app
-        working-directory: ios-app
-        run: |
-          npm ci
-          npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ios-app/www
+          path: redirect
       - id: deployment
         uses: actions/deploy-pages@v4
