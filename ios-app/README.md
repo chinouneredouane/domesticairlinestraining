@@ -1,5 +1,11 @@
 # DAL TRAINING – iOS app
 
+> **Note:** the live DAL TRAINING app is now the Training Academy site in the
+> [domesticairlineselearning](https://github.com/chinouneredouane/domesticairlineselearning) repository
+> (https://chinouneredouane.github.io/domesticairlineselearning/), which pilots install from Safari.
+> This repository's GitHub Pages address only redirects there (see `redirect/`).
+> The native iOS project below is kept for a possible future App Store release.
+
 **DAL TRAINING** is the Domestic Airlines training academy as an iPhone and iPad app for company pilots. It has two courses:
 
 | Course | Source | Content |
