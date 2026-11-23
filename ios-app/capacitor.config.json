@@ -1,0 +1,11 @@
+{
+  "appId": "com.domesticairlines.uprt",
+  "appName": "UPRT Training",
+  "webDir": "www",
+  "ios": {
+    "contentInset": "never",
+    "backgroundColor": "#0b1f3a",
+    "scrollEnabled": true,
+    "limitsNavigationsToAppBoundDomains": false
+  }
+}
