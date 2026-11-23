@@ -283,3 +283,28 @@ body.has-pager main { padding-bottom: calc(110px + var(--safe-bottom)); }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* ---------- Install & update ---------- */
+.install-banner {
+  display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 12px 14px; margin-bottom: 16px; box-shadow: var(--shadow);
+}
+.install-banner img { width: 44px; height: 44px; border-radius: 10px; flex: none; }
+.install-banner .ib-text { border: 0; background: none; text-align: left; padding: 0; flex: 1; font-size: .9em; line-height: 1.35; }
+.install-banner .ib-text strong { display: block; font-size: 1.05em; }
+.install-banner .ib-close { flex: none; width: 36px; height: 36px; border-radius: 50%; border: 0; background: var(--surface-2); color: var(--text-2); }
+.install-head { display: flex; gap: 14px; align-items: center; }
+.install-head img { border-radius: 14px; }
+.install-head h2 { margin: 0; }
+.install-steps { padding-left: 1.3em; margin: 18px 0; }
+.install-steps li { margin: 10px 0; }
+.share-glyph { display: inline-flex; vertical-align: -4px; color: var(--accent); }
+.secondary-btn.tight { margin: 0; }
+.update-bar {
+  position: fixed; left: 12px; right: 12px; top: calc(var(--safe-top) + 64px); z-index: 25;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: #101828; color: #fff; border-radius: 14px; padding: 10px 10px 10px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.3); max-width: 640px; margin: 0 auto; font-size: .92em;
+}
+.update-bar button { min-height: 40px; padding: 0 16px; border: 0; border-radius: 10px; background: #4d9bff; color: #04111f; font-weight: 700; }

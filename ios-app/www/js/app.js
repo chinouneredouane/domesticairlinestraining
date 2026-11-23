@@ -101,6 +101,11 @@
     setChrome({ title: 'DAL TRAINING' });
     const inProgress = COURSES.filter((c) => doneCount(c) > 0 && !courseDone(c));
     view.innerHTML = `
+      ${showInstallBanner() ? `<div class="install-banner" id="installBanner">
+        <img src="icons/apple-touch-icon.png" alt="" />
+        <button class="ib-text" data-install><strong>Install DAL TRAINING</strong>Add it to your home screen to use it like an app, even offline.</button>
+        <button class="ib-close" id="installDismiss" aria-label="Dismiss">✕</button>
+      </div>` : ''}
       <section class="academy-hero">
         <div class="logo-chip"><img src="img/logo.png" alt="Domestic Airlines" /></div>
         <h1>Training Academy</h1>
@@ -356,6 +361,7 @@
   // ---------- Routing ----------
   function route() {
     stopTimer();
+    ['installSheet', 'installBackdrop', 'settingsSheet', 'sheetBackdrop', 'lightbox'].forEach((id) => { $(id).hidden = true; });
     current = null;
     const parts = location.hash.replace(/^#\/?/, '').split('/').map(decodeURIComponent);
     const c = parts[0] === 'c' && course(parts[1]);
@@ -452,6 +458,68 @@
 
   document.addEventListener('visibilitychange', () => { if (document.hidden) saveState(); });
   window.addEventListener('hashchange', route);
+
+  // ---------- Install as an app (web version) & offline ----------
+  const isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
+  const isStandalone = () => window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+  const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  let deferredPrompt = null;
+  const dismissed = () => { try { return localStorage.getItem('dal-install-dismissed') === '1'; } catch (e) { return false; } };
+  function showInstallBanner() {
+    return !isNative && !isStandalone() && location.protocol.startsWith('http') && (isIOS || deferredPrompt) && !dismissed();
+  }
+  function openInstall() {
+    $('installStepsIos').hidden = !isIOS && !!deferredPrompt;
+    $('installNativeBtn').hidden = !deferredPrompt;
+    $('installSheet').hidden = false; $('installBackdrop').hidden = false;
+  }
+  const closeInstall = () => { $('installSheet').hidden = true; $('installBackdrop').hidden = true; };
+  $('closeInstall').onclick = closeInstall;
+  $('installBackdrop').onclick = closeInstall;
+  $('installHelpBtn').onclick = () => { closeSheet(); openInstall(); };
+  $('installNativeBtn').onclick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice.catch(() => {});
+    deferredPrompt = null; closeInstall(); route();
+  };
+  view.addEventListener('click', (e) => {
+    if (e.target.closest('[data-install]')) openInstall();
+    if (e.target.closest('#installDismiss')) {
+      try { localStorage.setItem('dal-install-dismissed', '1'); } catch (err) {}
+      $('installBanner').remove();
+    }
+  });
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault(); deferredPrompt = e;
+    if (!location.hash || location.hash === '#/') route();
+  });
+  if (isNative || isStandalone()) $('installSetting').hidden = true;
+
+  if (!isNative && 'serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').then((reg) => {
+        const offerUpdate = (w) => {
+          $('updateBar').hidden = false;
+          $('updateBtn').onclick = () => w.postMessage('skipWaiting');
+        };
+        if (reg.waiting && navigator.serviceWorker.controller) offerUpdate(reg.waiting);
+        reg.addEventListener('updatefound', () => {
+          const w = reg.installing;
+          w && w.addEventListener('statechange', () => {
+            if (w.state === 'installed' && navigator.serviceWorker.controller) offerUpdate(w);
+          });
+        });
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) reg.update().catch(() => {}); });
+      }).catch(() => {});
+      let reloading = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (reloading) return; reloading = true; location.reload();
+      });
+    });
+    // Ask the browser to keep saved progress even when the device is low on space.
+    if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
+  }
 
   // ---------- Start ----------
   loadState().then(() => { applyPrefs(); route(); });

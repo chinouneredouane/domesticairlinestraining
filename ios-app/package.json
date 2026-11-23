@@ -5,7 +5,7 @@
   "description": "DAL TRAINING \u2013 Domestic Airlines training academy iOS app (UPRT, Cold Weather Operations, ...).",
   "scripts": {
     "sync-assets": "node scripts/sync-assets.js",
-    "build": "npm run sync-assets",
+    "build": "npm run sync-assets && node scripts/build-sw.js",
     "ios:sync": "npm run build && npx cap sync ios",
     "ios:open": "npx cap open ios",
     "serve": "npm run build && npx http-server www -p 8080 -c-1"

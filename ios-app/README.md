@@ -45,7 +45,22 @@ The app hides any missing image or audio player instead of showing a broken icon
 - **Cold Weather Ops quiz:** the original question bank had 1 real question plus 49 copies of the same placeholder, so the quiz currently has 2 questions. Add real questions in `quiz.questions`. The quiz automatically uses up to 20 of them.
 - **Cold Weather Ops:** there is no lesson audio, and the lesson images are title cards.
 
-## Building the app
+## Free option: install from Safari (no Apple account needed)
+
+DAL TRAINING is also published as a web app that pilots add to their home screen. It opens full screen with its own icon, works offline after the first visit, saves progress and updates itself.
+
+**One-time setup, done once by you:**
+1. On GitHub, open this repository, go to **Settings → Pages**, and under *Build and deployment → Source* choose **GitHub Actions**.
+2. Merge this branch into `main`. The workflow `.github/workflows/pages.yml` publishes `ios-app/www` automatically after every push to `main`, and you can also run it by hand from the **Actions** tab.
+3. The app is then live at **https://chinouneredouane.github.io/domesticairlinestraining/**.
+
+**What each pilot does:** open the link in **Safari**, tap **Share**, then **Add to Home Screen**, then **Add**. The app also shows a short guide for this.
+
+**Updating content:** edit the course files and push to `main`. Pilots see a "New training content is available, Update" bar the next time they open the app.
+
+> The link is public: anyone who has it can open the training.
+
+## Building the native iOS app (needs a paid Apple Developer account)
 
 You need a **Mac with Xcode 16 or later** and Node.js 22.
 
