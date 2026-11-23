@@ -6,6 +6,7 @@
 |---|---|---|
 | Upset Prevention & Recovery (UPRT) | this repository (`index.html`, `module*.html`) | 12 modules |
 | Cold Weather Operations | [cold-weather-ops](https://github.com/chinouneredouane/cold-weather-ops) (the course zip) | 30 lessons + final quiz |
+
 The app is built with [Capacitor](https://capacitorjs.com): the training pages run inside a native iOS shell, and everything is bundled into the app, so **it works fully offline** (in flight, on a layover, with no Wi-Fi).
 
 ## What pilots get
